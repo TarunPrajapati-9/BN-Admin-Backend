@@ -24,7 +24,7 @@ Router.post('/additem', upload, async (req, res) => {
         const { name, description, category } = req.body;
         console.log(req.file);
         console.log(req.file.filename);
-        const imageUrl = req.file.filename;
+        const imageUrl = req.file.originalname;
 
         if (!name || !description || !category || !imageUrl) {
             return res.status(400).json({ error: "All Fields must be Required" });
