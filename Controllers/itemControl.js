@@ -4,9 +4,10 @@ const Items = require('../Modules/Item');
 //POST /api/items/additem
 const addItem = async (req, res) => {
     try {
-        console.log(req.body);
-        const { name, description, category } = req.body;
-        const imageUrl = req.file.filename;
+        console.log(req);
+        const { name, description, category, imageUrl } = req.body;
+        console.log(req.file);
+        // const imageUrl = req.file.filename;
 
         if (!name || !description || !category || !imageUrl) {
             return res.status(400).json({ error: "All Fields must be Required" });

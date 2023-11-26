@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage }).single("imageUrl")
+const upload = multer({ storage: storage }).single("imageUrl");
 
 const { addItem, fetchAllItems } = require('../Controllers/itemControl');
 const Router = express.Router();
