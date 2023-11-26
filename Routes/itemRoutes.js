@@ -11,7 +11,13 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage }).single("imageUrl");
+const upload = multer({ storage: storage }).single("imageUrl")(req, res, function (error) {
+    if (error) {
+        console.log(`upload.single error: ${error}`);
+        return res.sendstatus(500);
+    }
+    // code
+});
 
 const { addItem, fetchAllItems } = require('../Controllers/itemControl');
 const Router = express.Router();
@@ -22,9 +28,9 @@ Router.get('/fetchitems', fetchAllItems);
 Router.post('/additem', upload, async (req, res) => {
     try {
         const { name, description, category } = req.body;
-        console.log(req.file);
-        console.log(req.file.filename);
-        const imageUrl = req.file.originalname;
+        // console.log(req.file);
+        // console.log(req.file.filename);
+        const imageUrl = req.files[0].filename;
 
         if (!name || !description || !category || !imageUrl) {
             return res.status(400).json({ error: "All Fields must be Required" });
