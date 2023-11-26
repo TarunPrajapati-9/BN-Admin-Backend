@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const express = require('express');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -10,12 +11,12 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage }).single("imageUrl")
 
 const { addItem, fetchAllItems } = require('../Controllers/itemControl');
 const Router = express.Router();
 
-Router.get('/fetchitems', upload.single("image"), fetchAllItems);
-Router.post('/additem', addItem);
+Router.get('/fetchitems', fetchAllItems);
+Router.post('/additem', upload, addItem);
 
 module.exports = Router;
