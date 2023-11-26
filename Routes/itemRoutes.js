@@ -11,13 +11,7 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage }).single("imageUrl")(req, res, function (error) {
-    if (error) {
-        console.log(`upload.single error: ${error}`);
-        return res.sendstatus(500);
-    }
-    // code
-});
+const upload = multer({ storage: storage }).single("imageUrl");
 
 const { addItem, fetchAllItems } = require('../Controllers/itemControl');
 const Router = express.Router();
