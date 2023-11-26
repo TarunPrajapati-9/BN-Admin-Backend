@@ -4,6 +4,7 @@ const Items = require('../Modules/Item');
 //POST /api/items/additem
 const addItem = async (req, res) => {
     try {
+        console.log(req.body);
         const { name, description, category, imageUrl } = req.body;
 
         if (!name || !description || !category || !imageUrl) {
