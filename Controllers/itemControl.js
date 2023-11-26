@@ -4,10 +4,10 @@ const Items = require('../Modules/Item');
 //POST /api/items/additem
 const addItem = async (req, res) => {
     try {
-        console.log(req);
-        const { name, description, category, imageUrl } = req.body;
+        const { name, description, category } = req.body;
         console.log(req.file);
-        // const imageUrl = req.file.filename;
+        console.log(req.file.filename);
+        const imageUrl = req.file.filename;
 
         if (!name || !description || !category || !imageUrl) {
             return res.status(400).json({ error: "All Fields must be Required" });
@@ -23,7 +23,7 @@ const addItem = async (req, res) => {
         res.json(addItem);
     } catch (err) {
         console.error("Error adding item:", err);
-        res.status(500).json({ error: "Internal Server Error" });
+        // res.status(500).json({ error: "Internal Server Error" });
     }
 };
 
