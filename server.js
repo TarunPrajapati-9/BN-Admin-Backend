@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
     res.send("Hello From Backend Server");
 });
 
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 app.use(express.json());
 app.use('/api/items', require('./Routes/itemRoutes'));

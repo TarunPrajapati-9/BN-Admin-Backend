@@ -5,8 +5,7 @@ const Items = require('../Modules/Item');
 const addItem = async (req, res) => {
     try {
         const { name, description, category } = req.body;
-        console.log(req.file);
-        console.log(req.file.filename);
+        // console.log(req.file.filename);
         const imageUrl = req.file.filename;
 
         if (!name || !description || !category || !imageUrl) {
@@ -25,7 +24,7 @@ const addItem = async (req, res) => {
         console.error("Error adding item:", err);
         // res.status(500).json({ error: "Internal Server Error" });
     }
-};
+}
 
 
 //GET /api/item/fetchitems

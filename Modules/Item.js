@@ -13,7 +13,7 @@ const ItemSchema = mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Flooring', 'Other', 'Plumbing', 'Concrete & Masonry', 'Electrical & Lighting']
+        enum: ['Flooring', 'Senting', 'Plumbing', 'Concrete & Masonry', 'Electrical & Lighting', 'Other']
     },
     imageUrl: {
         type: String,
