@@ -5,12 +5,18 @@ const Items = require('../Modules/Item');
 const addItem = async (req, res) => {
     try {
         const { name, description, category } = req.body;
+        let imageUrl;
         // console.log(req.file.filename);
-        const imageUrl = req.file.filename;
-
-        if (!name || !description || !category || !imageUrl) {
-            return res.status(400).json({ error: "All Fields must be Required" });
+        if (req.file && req.file.filename) {
+            imageUrl = req.file.filename;
+            if (!name || !description || !category) {
+                return res.status(400).json({ error: "All Fields must be Required" });
+            }
         }
+        else {
+            return res.status(400).json({ error: "Please Upload File!!" });
+        }
+
 
         const addItem = await Items.create({
             name,
